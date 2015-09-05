@@ -1,0 +1,42 @@
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+			 version="2.0">
+
+	<persistence-unit name="hsqldb" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+		<class>com.ljstudio.domain.Role</class>
+		<class>com.ljstudio.domain.User</class>
+		<properties>
+
+			<!--把下面的注释打开，会自动创建表。执行测试用例DataSeed.seedData，会自动的创建用户和角色-->
+			<!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<!--<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />-->
+
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+
+			<property name="hibernate.hikari.dataSourceClassName" value="com.mysql.jdbc.jdbc2.optional.MysqlDataSource" />
+			<!--<property name="hibernate.hikari.dataSource.url" value="jdbc:hsqldb:hsql://localhost/ojug-shirotalk" />-->
+			<!--<property name="hibernate.hikari.dataSource.url" value="jdbc.mysql://localhost:3306/testdatabase?useUnicode=true&amp;characterEncoding=UTF-8;" />-->
+			<property name="hibernate.hikari.dataSource.url" value="jdbc:mysql://127.0.0.1:3306/testdatabase?useUnicode=true&amp;characterEncoding=utf8" />
+			<!--<property name="hibernate.hikari.dataSource.user" value="root" />-->
+			<property name="hibernate.connection.username" value="root" />
+			<property name="hibernate.connection.password" value="123456" />
+
+			<property name="hibernate.hikari.poolName" value="ljstudio_pool" />
+
+			<property name="hibernate.connection.provider_class" value="com.zaxxer.hikari.hibernate.HikariConnectionProvider" />
+			<property name="hibernate.hikari.maximumPoolSize" value="100" />
+			<property name="hibernate.hikari.idleTimeout" value="30000" />
+
+			<property name="hibernate.id.new_generator_mappings" value="true" />
+
+		</properties>
+	</persistence-unit>
+
+</persistence>
