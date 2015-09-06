@@ -4,14 +4,14 @@
 			 xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 			 version="2.0">
 
-	<persistence-unit name="hsqldb" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="db" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>com.jdm.ojug.shirotalk.domain.Role</class>
-		<class>com.jdm.ojug.shirotalk.domain.User</class>
+		<class>com.ljstudio.domain.Role</class>
+		<class>com.ljstudio.domain.User</class>
 		<properties>
 
 			<!--把下面的注释打开，会自动创建表。执行测试用例DataSeed.seedData，会自动的创建用户和角色-->
-			 <property name="hibernate.hbm2ddl.auto" value="create" />
+			 <!--<property name="hibernate.hbm2ddl.auto" value="create" />-->
 
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			<!--<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />-->
