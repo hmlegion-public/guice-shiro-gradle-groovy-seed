@@ -1,7 +1,8 @@
-package com.ljstudio.services
+package com.ljstudio.services.impl
 
 import com.ljstudio.dao.UserDao
 import com.ljstudio.domain.User
+import com.ljstudio.services.UserService
 
 import javax.inject.Inject
 import javax.inject.Provider

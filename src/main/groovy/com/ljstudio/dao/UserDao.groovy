@@ -2,8 +2,7 @@ package com.ljstudio.dao
 
 import com.ljstudio.domain.User
 
-interface UserDao {
+interface UserDao extends GenericDao < User, Long >{
 	User fetchUserByUsername(String username)
-	void persistUser(User user)
 	List<User> fetchAllUsers()
 }

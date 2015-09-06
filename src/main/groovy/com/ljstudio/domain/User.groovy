@@ -7,7 +7,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name="SHIROTALK_USER")
-class User {
+class User extends BaseBean{
 	
 	@Id
 	@Column(name="USER_ID")
@@ -51,5 +51,9 @@ class User {
 			role.code
 		}
 	}
-	
+
+	@Override
+	Object getPrimaryKey() {
+		return userId
+	}
 }

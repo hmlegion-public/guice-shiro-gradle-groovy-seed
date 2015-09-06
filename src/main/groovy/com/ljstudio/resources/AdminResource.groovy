@@ -2,6 +2,8 @@ package com.ljstudio.resources
 
 import com.ljstudio.domain.User
 import com.ljstudio.services.UserService
+import com.ljstudio.utils.RequestItem
+import com.ljstudio.utils.RequestLogger
 
 import javax.inject.Inject
 import javax.ws.rs.GET
@@ -10,11 +12,13 @@ import javax.ws.rs.Produces
 import javax.ws.rs.core.MediaType
 
 @Path("admin")
-class AdminResource {
+class AdminResource extends BaseResource{
 	private final UserService userService
 	
 	@Inject
-	public AdminResource(UserService userService) {
+	public AdminResource(RequestItem requestItem,
+						 RequestLogger requestLogger,UserService userService) {
+		super ( requestItem, requestLogger );
 		this.userService = userService
 	}
 	

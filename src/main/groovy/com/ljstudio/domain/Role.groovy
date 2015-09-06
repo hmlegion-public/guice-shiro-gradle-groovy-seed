@@ -6,7 +6,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name="ROLE")
-class Role {
+class Role extends BaseBean{
 	
 	@JsonIgnore
 	@Id
@@ -22,4 +22,8 @@ class Role {
 	@Column(name="DESCRIPTION", length=100, nullable=false)
 	String description
 
+	@Override
+	Object getPrimaryKey() {
+		return roleId;
+	}
 }

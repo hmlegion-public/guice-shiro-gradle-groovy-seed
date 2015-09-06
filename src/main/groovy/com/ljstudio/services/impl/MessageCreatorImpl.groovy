@@ -1,6 +1,7 @@
-package com.ljstudio.services
+package com.ljstudio.services.impl
 
 import com.ljstudio.domain.HelloWorldMessage
+import com.ljstudio.services.MessageCreator
 import groovyx.net.http.RESTClient
 
 class MessageCreatorImpl implements MessageCreator {

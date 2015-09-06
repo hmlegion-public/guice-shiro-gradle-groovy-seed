@@ -1,26 +1,24 @@
-package com.ljstudio.dao
+package com.ljstudio.dao.impl
 
+import com.google.inject.Inject
+import com.ljstudio.dao.UserDao
 import com.ljstudio.domain.User
+import com.ljstudio.utils.RequestLogger
 import org.apache.onami.persist.EntityManagerProvider
 import org.apache.onami.persist.Transactional
 import org.apache.shiro.authz.annotation.RequiresRoles
 
-import javax.inject.Inject
-
-class UserDaoImpl implements UserDao {
-
-	private EntityManagerProvider em
-
+class UserDaoImpl extends GenericDaoImpl < User, Long > implements UserDao {
 	@Inject
-	public UserDaoImpl(EntityManagerProvider em) {
-		this.em = em
+	UserDaoImpl(EntityManagerProvider emp, RequestLogger logger) {
+		super(emp, User.class, logger)
 	}
 
 	@Override
 	@Transactional
 	public User fetchUserByUsername(String username) {
 
-		List<User> result = em.get().createQuery("from User where username = :username")
+		List<User> result = em().createQuery("from User where username = :username")
 				.setParameter('username', username).getResultList()
 
 		return result?.size() > 0 ? result[0] : null
@@ -28,15 +26,9 @@ class UserDaoImpl implements UserDao {
 
 	@Override
 	@Transactional
-	public void persistUser(User user) {
-		em.get().persist(user)
-	}
-
-	@Override
-	@Transactional
 	@RequiresRoles("ADMIN")
 	public List<User> fetchAllUsers() {
-		return em.get().createQuery("from User").getResultList();
+		return em().createQuery("from User").getResultList();
 	}
 
 }

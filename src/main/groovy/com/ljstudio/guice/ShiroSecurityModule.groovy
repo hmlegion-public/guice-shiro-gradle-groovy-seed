@@ -27,6 +27,7 @@ public class ShiroSecurityModule extends ShiroWebModule {
 		addFilterChain("/api/ka", ANON);
 		addFilterChain("/api/login", ANON);
 		addFilterChain("/api/schedule/**", ANON);
+		addFilterChain("/api/inter/**", ANON);
 
 		addFilterChain("/api/logout", LOGOUT);
 		

@@ -1,7 +1,5 @@
 package com.ljstudio.resources
 
-import com.google.inject.Injector
-import com.ljstudio.guice.AppGuiceServletContextListener
 import com.ljstudio.scheduler.MyProcessor
 
 import javax.inject.Inject
